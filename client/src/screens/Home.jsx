@@ -4,6 +4,8 @@ import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import Slider from '../components/Slider';
 import Button from '@mui/material/Button';
+import ProductCard from '../components/ProductCard';
+import Typography from '@mui/material/Typography';
 
 // Import Icons
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -33,7 +35,7 @@ const LocationInputStyles = {
 const Home = () => {
   return (
     <div className='home-container'>
-      <h1>Hello,</h1>
+      <Typography variant='h1'>Hello,</Typography>
       <Slider images={images} styles={SliderStyles} />
       <Autocomplete
         style={{ ...LocationInputStyles }}
@@ -77,6 +79,7 @@ const Home = () => {
           <NavigateNextIcon sx={{ color: 'black', fontSize: '2rem' }} />
         </Button>
       </div>
+      <ProductCard />
     </div>
   );
 };
