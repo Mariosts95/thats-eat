@@ -50,6 +50,7 @@ const Home = () => {
             <TextField
               {...params}
               InputProps={{
+                ...params.InputProps,
                 startAdornment: (
                   <InputAdornment position='start'>
                     <LocationOnIcon sx={{ color: '#ccc' }} />
