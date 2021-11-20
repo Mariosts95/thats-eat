@@ -6,6 +6,7 @@ import Slider from '../components/Slider';
 import Button from '@mui/material/Button';
 import ProductCard from '../components/ProductCard';
 import Typography from '@mui/material/Typography';
+import { v4 as uuidv4 } from 'uuid';
 
 // Import Icons
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -16,7 +17,40 @@ import slider1 from '../assets/images/slide1.jpg';
 import slider2 from '../assets/images/slide2.jpg';
 import slider3 from '../assets/images/slide3.jpg';
 const images = [slider1, slider2, slider3];
-
+import espressoImg from '../assets/images/espresso.png';
+import freddoEspressoImg from '../assets/images/freddo-espresso.jpg';
+import cappucinoImg from '../assets/images/cappuchino.webp';
+import freddoCappucinoImg from '../assets/images/freddo-cappuccino.jpg';
+const products = [
+  {
+    productId: 1,
+    productName: 'Espresso',
+    productDescription: '100% Arabica',
+    productImg: espressoImg,
+    productImgAlt: 'product',
+  },
+  {
+    productId: 2,
+    productName: 'Freddo Espresso',
+    productDescription: '100% Arabica',
+    productImg: freddoEspressoImg,
+    productImgAlt: 'product',
+  },
+  {
+    productId: 3,
+    productName: 'Cappucino',
+    productDescription: '100% Arabica',
+    productImg: cappucinoImg,
+    productImgAlt: 'product',
+  },
+  {
+    productId: 4,
+    productName: 'Freddo Cappucino',
+    productDescription: '100% Arabica',
+    productImg: freddoCappucinoImg,
+    productImgAlt: 'product',
+  },
+];
 // Components styles
 import './Home.css';
 
@@ -79,7 +113,24 @@ const Home = () => {
           <NavigateNextIcon sx={{ color: 'black', fontSize: '2rem' }} />
         </Button>
       </div>
-      <ProductCard />
+      {products.map(
+        ({
+          productName,
+          productDescription,
+          productImg,
+          productImgAlt,
+          productId,
+        }) => (
+          <ProductCard
+            key={uuidv4()}
+            productId={productId}
+            productName={productName}
+            productDescription={productDescription}
+            productImg={productImg}
+            productImgAlt={productImgAlt}
+          />
+        )
+      )}
     </div>
   );
 };

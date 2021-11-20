@@ -1,43 +1,35 @@
-import React from 'react';
+const productCardStyles = {
+  display: 'flex',
+  justifyContent: 'space-around',
+  alignItems: 'center',
+  maxWidth: '400px',
+  width: '100%',
+  border: '1px solid gray',
+  borderRadius: '12px',
+  margin: '0 0 15px',
+};
 
-// MUI
-import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import SkipNextIcon from '@mui/icons-material/SkipNext';
-import espressoImg from '../assets/images/espresso.png';
-
-const ProductCard = () => {
-  const theme = useTheme();
+const ProductCard = ({
+  productName,
+  productDescription,
+  productImg,
+  productImgAlt,
+}) => {
   return (
-    <Card sx={{ display: 'flex' }}>
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <CardContent sx={{ flex: '1 0 auto' }}>
-          <Typography component='div' variant='h5'>
-            Espresso
-          </Typography>
-          <Typography
-            variant='subtitle1'
-            color='text.secondary'
-            component='div'
-          >
-            100% Arabica
-          </Typography>
-        </CardContent>
-      </Box>
-      <CardMedia
-        component='img'
-        sx={{ width: 150 }}
-        image={espressoImg}
-        alt='Espresso'
-      />
-    </Card>
+    <div className='product-card' style={{ ...productCardStyles }}>
+      <div className='product-info'>
+        <h3>{productName}</h3>
+        <p>{productDescription}</p>
+        <button>Add to cart</button>
+      </div>
+      <div className='product-img'>
+        <img
+          src={productImg}
+          alt={productImgAlt}
+          style={{ width: '150px', height: '150px', objectFit: 'cover' }}
+        />
+      </div>
+    </div>
   );
 };
 
