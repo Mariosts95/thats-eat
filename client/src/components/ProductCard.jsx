@@ -5,7 +5,7 @@ const productCardStyles = {
   border: '1px solid gray',
   borderRadius: '12px',
   margin: '0 0 15px',
-  padding: '0 20px',
+  padding: '20px',
 };
 
 const ProductCard = ({
@@ -13,13 +13,14 @@ const ProductCard = ({
   productDescription,
   productImg,
   productImgAlt,
+  onClick,
 }) => {
   return (
     <div className='product-card' style={{ ...productCardStyles }}>
       <div className='product-info'>
         <h3>{productName}</h3>
         <p>{productDescription}</p>
-        <button>Add to cart</button>
+        <button onClick={onClick}>Add to cart</button>
       </div>
       <div className='product-img'>
         <img
