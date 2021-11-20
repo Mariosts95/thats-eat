@@ -101,7 +101,7 @@ const Home = () => {
       <div className='find-my-location'>
         <a href='javascript:void()'>Find my location</a>
       </div>
-      <div style={{ width: '100%', display: 'flex' }}>
+      <div style={{ width: '100%', display: 'flex', marginBottom: '50px' }}>
         <Button
           variant='outlined'
           style={{
@@ -113,24 +113,26 @@ const Home = () => {
           <NavigateNextIcon sx={{ color: 'black', fontSize: '2rem' }} />
         </Button>
       </div>
-      {products.map(
-        ({
-          productName,
-          productDescription,
-          productImg,
-          productImgAlt,
-          productId,
-        }) => (
-          <ProductCard
-            key={uuidv4()}
-            productId={productId}
-            productName={productName}
-            productDescription={productDescription}
-            productImg={productImg}
-            productImgAlt={productImgAlt}
-          />
-        )
-      )}
+      <div>
+        {products.map(
+          ({
+            productName,
+            productDescription,
+            productImg,
+            productImgAlt,
+            productId,
+          }) => (
+            <ProductCard
+              key={uuidv4()}
+              productId={productId}
+              productName={productName}
+              productDescription={productDescription}
+              productImg={productImg}
+              productImgAlt={productImgAlt}
+            />
+          )
+        )}
+      </div>
     </div>
   );
 };

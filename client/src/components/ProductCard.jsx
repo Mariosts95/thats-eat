@@ -1,12 +1,11 @@
 const productCardStyles = {
   display: 'flex',
-  justifyContent: 'space-around',
+  justifyContent: 'space-between',
   alignItems: 'center',
-  maxWidth: '400px',
-  width: '100%',
   border: '1px solid gray',
   borderRadius: '12px',
   margin: '0 0 15px',
+  padding: '0 20px',
 };
 
 const ProductCard = ({
