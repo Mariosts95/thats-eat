@@ -1,15 +1,14 @@
-import { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import Home from './screens/Home';
+import Store from './screens/Store';
+import Sandbox from './screens/Sandbox';
 import ShoppingCartProvider from './store/ShoppingCartProvider';
+import ShoppingCart from './components/ShoppingCart';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <ShoppingCartProvider>
-      <Home />
+      <Store />
+      <ShoppingCart />
     </ShoppingCartProvider>
   );
 }

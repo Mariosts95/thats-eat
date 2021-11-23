@@ -1,33 +1,27 @@
-const productCardStyles = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  border: '1px solid gray',
-  borderRadius: '12px',
-  margin: '0 0 15px',
-  padding: '20px',
-};
+import './ProductCard.scopped.css';
 
 const ProductCard = ({
-  productName,
-  productDescription,
-  productImg,
-  productImgAlt,
+  name,
+  description,
+  imgPath,
+  imgAlt,
+  price,
   onClick,
+  cart,
+  quantity,
 }) => {
   return (
-    <div className='product-card' style={{ ...productCardStyles }}>
-      <div className='product-info'>
-        <h3>{productName}</h3>
-        <p>{productDescription}</p>
-        <button onClick={onClick}>Add to cart</button>
+    <div className='product-card'>
+      <div className='info'>
+        <h3 className='name'>{name}</h3>
+        <p className='description'>{description}</p>
+        <p className='price'>€{price}</p>
+        <button onClick={onClick}>
+          {cart ? 'Remove from' : 'Add to'} cart
+        </button>
       </div>
-      <div className='product-img'>
-        <img
-          src={productImg}
-          alt={productImgAlt}
-          style={{ width: '150px', height: '150px', objectFit: 'cover' }}
-        />
+      <div>
+        <img src={imgPath} alt={imgAlt} />
       </div>
     </div>
   );
