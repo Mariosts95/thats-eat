@@ -1,4 +1,4 @@
-import './ProductCard.scopped.css';
+import './ProductCard.scss';
 
 const ProductCard = ({
   name,
