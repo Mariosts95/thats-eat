@@ -1,12 +1,28 @@
 const router = require('express').Router();
-const { addStore } = require('../database/actions/stores');
-// add new store
-router.post('/createStore', (req, res, next) => {
-  const store1 = req.body;
-  addStore(store1)
-    .then((newStore) => {
-      return res.status(200).send(newStore);
-    })
+
+const { getStores } = require('../database/actions/stores');
+const { getCuisines } = require('../database/actions/cuisines');
+const { getCategories } = require('../database/actions/categories');
+
+router.get('/stores', (req, res, next) => {
+  // get the parameters from query
+  // const { from, size } = req.query;
+  getStores()
+    .then((data) => res.status(200).send(data))
+    .catch((error) => {
+      next(error);
+    });
+});
+router.get('/cuisines', (req, res, next) => {
+  getCuisines()
+    .then((data) => res.status(200).send(data))
+    .catch((error) => {
+      next(error);
+    });
+});
+router.get('/categories', (req, res, next) => {
+  getCategories()
+    .then((data) => res.status(200).send(data))
     .catch((error) => {
       next(error);
     });
