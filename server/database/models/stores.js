@@ -7,11 +7,6 @@ const WorkingHoursSchema = mongoose.Schema({
   close: { type: Number },
 });
 
-const menuSchema = mongoose.Schema({
-  category: { type: String },
-  products: [ProductSchema],
-});
-
 const StoreSchema = mongoose.Schema({
   name: { type: String, required: true },
   minDelivery: { type: Number },
@@ -19,10 +14,10 @@ const StoreSchema = mongoose.Schema({
   workingHours: { type: WorkingHoursSchema },
   logo: { type: String },
   banner: { type: String },
-  category: [String],
+  cuisines: [String],
   address: { type: addressSchema },
   rating: { type: Number },
-  menu: [menuSchema],
+  menu: [ProductSchema],
 });
 
 StoreSchema.index({ key: 1 });
