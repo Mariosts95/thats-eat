@@ -1,33 +1,37 @@
 .product-card {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background-color: rgb(58, 58, 58);
-  color: #fff;
-  border: 1px solid #000;
-  width: 80%;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid;
+  max-width: 600px;
+  width: 100%;
   border-radius: 8px;
   margin: 0 auto 15px;
-  padding: 20px;
+  padding: 25px;
+  .image {
+    width: 150px;
+    height: 150px;
+    border-radius: 4px;
+    margin: 0 30px 0 0;
+    img {
+      object-fit: cover;
+    }
+  }
   .name {
     margin: 0 0 15px;
   }
   .description {
   }
-  img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
+
   button {
-    background-color: rgb(255, 163, 78);
+    background-color: $primaryColor;
     border: none;
     border-radius: 8px;
     padding: 8px 15px;
     cursor: pointer;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 900;
   }
   button:hover {
     opacity: 0.7;

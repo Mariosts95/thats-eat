@@ -16,6 +16,7 @@ const products = [
     description: '100% Arabica',
     imgPath: espressoImg,
     imgAlt: 'product',
+    price: 1.6,
   },
   {
     id: 2,
@@ -23,6 +24,7 @@ const products = [
     description: '100% Arabica',
     imgPath: freddoEspressoImg,
     imgAlt: 'product',
+    price: 1.8,
   },
   {
     id: 3,
@@ -30,6 +32,7 @@ const products = [
     description: '100% Arabica',
     imgPath: cappucinoImg,
     imgAlt: 'product',
+    price: 1.8,
   },
   {
     id: 4,
@@ -37,10 +40,11 @@ const products = [
     description: '100% Arabica',
     imgPath: freddoCappucinoImg,
     imgAlt: 'product',
+    price: 2,
   },
 ];
 
-const Home = () => {
+const ProductsList = () => {
   const { addToCart } = UseShoppingCart();
   return (
     <>
@@ -53,6 +57,7 @@ const Home = () => {
             description={item.description}
             imgPath={item.imgPath}
             imgAlt={item.imgAlt}
+            price={item.price}
             onClick={() => {
               addToCart(item);
             }}
@@ -66,4 +71,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default ProductsList;

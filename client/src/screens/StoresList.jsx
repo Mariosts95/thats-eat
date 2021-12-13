@@ -1,6 +1,7 @@
 import React from 'react';
 import { UseShoppingCart } from '../store/ShoppingCartProvider';
 import ProductCard from '../components/ProductCard';
+import StoreCard from '../components/StoreCard';
 import { v4 as uuidv4 } from 'uuid';
 import useFetch from '../hooks/useFetch';
 
@@ -11,20 +12,19 @@ const Store = () => {
   console.log(data);
 
   if (loading || !data) return <div>Loading...</div>;
+
   return (
     <>
       <h2>Stores:</h2>
-      {data.stores.map((product) => (
-        <ProductCard
+      {data.stores.map((store) => (
+        <StoreCard
           key={uuidv4()}
-          name={product.name}
-          description={product.rating}
-          imgPath={product.imgPath}
-          imgAlt={product.imgAlt}
-          price={product.price}
-          onClick={() => {
-            addToCart(product);
-          }}
+          name={store.name}
+          cuisines={store.cuisines}
+          banner={store.imgPath}
+          imgAlt={store.imgAlt}
+          rating={store.rating}
+          minDelivery={store.minDelivery}
         />
       ))}
     </>

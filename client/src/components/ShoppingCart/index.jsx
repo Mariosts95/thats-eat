@@ -1,5 +1,5 @@
-import { UseShoppingCart } from '../store/ShoppingCartProvider';
-import ProductCard from './ProductCard';
+import { UseShoppingCart } from '../../store/ShoppingCartProvider';
+import ProductCard from '../ProductCard';
 import { v4 as uuidv4 } from 'uuid';
 
 const ShoppingCart = () => {

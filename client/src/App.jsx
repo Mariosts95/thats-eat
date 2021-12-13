@@ -1,14 +1,15 @@
-import Home from './screens/Home';
-import Stores from './screens/Stores';
+import ProductsList from './screens/ProductsList';
+import StoresList from './screens/StoresList';
 import Sandbox from './screens/Sandbox';
+import Dummy from './screens/dummy';
 import ShoppingCartProvider from './store/ShoppingCartProvider';
 import ShoppingCart from './components/ShoppingCart';
 
 function App() {
   return (
     <ShoppingCartProvider>
-      <Stores />
-      <ShoppingCart />
+      <ProductsList />
+      <StoresList />
     </ShoppingCartProvider>
   );
 }
