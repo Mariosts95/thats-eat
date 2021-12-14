@@ -1,4 +1,4 @@
-import './ProductCard.scss';
+import './ProductCard.scoped.scss';
 
 const ProductCard = ({
   name,
@@ -12,6 +12,9 @@ const ProductCard = ({
 }) => {
   return (
     <div className='product-card'>
+      <div className='image'>
+        <img src={imgPath} alt={imgAlt} />
+      </div>
       <div className='info'>
         <h3 className='name'>{name}</h3>
         <p className='description'>{description}</p>
@@ -19,9 +22,6 @@ const ProductCard = ({
         <button onClick={onClick}>
           {cart ? 'Remove from' : 'Add to'} cart
         </button>
-      </div>
-      <div>
-        <img src={imgPath} alt={imgAlt} />
       </div>
     </div>
   );
