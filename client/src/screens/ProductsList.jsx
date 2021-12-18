@@ -1,8 +1,6 @@
 import React from 'react';
 import ProductCard from '../components/ProductCard';
 import { v4 as uuidv4 } from 'uuid';
-import ShoppingCartProvider from '../store/ShoppingCartProvider';
-import ShoppingCart from '../components/ShoppingCart';
 import { UseShoppingCart } from '../store/ShoppingCartProvider';
 
 import espressoImg from '../assets/images/espresso.png';
@@ -46,6 +44,7 @@ const products = [
 
 const ProductsList = () => {
   const { addToCart } = UseShoppingCart();
+
   return (
     <>
       <div>
@@ -63,9 +62,6 @@ const ProductsList = () => {
             }}
           />
         ))}
-      </div>
-      <div style={{ margin: '50px 0 0' }}>
-        <ShoppingCart />
       </div>
     </>
   );

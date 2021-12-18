@@ -1,21 +1,20 @@
 import React from 'react';
-import { UseShoppingCart } from '../store/ShoppingCartProvider';
-import ProductCard from '../components/ProductCard';
-import StoreCard from '../components/StoreCard';
+
 import { v4 as uuidv4 } from 'uuid';
+
 import useFetch from '../hooks/useFetch';
 
-const Store = () => {
-  const { addToCart } = UseShoppingCart();
+import './StoresList.scoped.scss';
+import StoreCard from '../components/StoreCard';
 
+const Store = () => {
   const { data, loading } = useFetch(`http://localhost:3000/stores`);
-  console.log(data);
 
   if (loading || !data) return <div>Loading...</div>;
 
   return (
-    <>
-      <h2>Stores:</h2>
+    <div className='stores-list'>
+      <h2>{data.count} Available Stores:</h2>
       {data.stores.map((store) => (
         <StoreCard
           key={uuidv4()}
@@ -27,7 +26,7 @@ const Store = () => {
           minDelivery={store.minDelivery}
         />
       ))}
-    </>
+    </div>
   );
 };
 

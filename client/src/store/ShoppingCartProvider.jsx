@@ -6,6 +6,9 @@ const UseShoppingCart = () => useContext(ShoppingCartContext);
 
 const ShoppingCartProvider = ({ children }) => {
   const [shoppingCart, setShoppingCart] = useState([]);
+  const [open, setOpen] = useState(false);
+  const openCart = () => setOpen(true);
+  const closeCart = () => setOpen(false);
 
   const addToCart = (id) => {
     setShoppingCart((prev) => [...prev, id]);
@@ -17,7 +20,14 @@ const ShoppingCartProvider = ({ children }) => {
 
   return (
     <ShoppingCartContext.Provider
-      value={{ shoppingCart, addToCart, removeFromCart }}
+      value={{
+        shoppingCart,
+        addToCart,
+        removeFromCart,
+        openCart,
+        closeCart,
+        open,
+      }}
     >
       {children}
     </ShoppingCartContext.Provider>

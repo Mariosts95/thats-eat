@@ -4,15 +4,16 @@ const { addStore } = require('../database/actions/stores');
 const { addCuisine } = require('../database/actions/cuisines');
 const { addCategory } = require('../database/actions/categories');
 
-
 // add new store
 router.post('/addStore', (req, res, next) => {
-  const store = req.body;
-  addStore(store)
-    .then((newStore) => res.status(200).send(newStore))
-    .catch((error) => {
-      next(error);
-    });
+  const stores = req.body;
+  stores.forEach((store) => {
+    addStore(store)
+      .then((newStore) => res.status(200).send(newStore))
+      .catch((error) => {
+        next(error);
+      });
+  });
 });
 
 // add cuisines
