@@ -2,7 +2,6 @@ import React from 'react';
 import { createPortal } from 'react-dom';
 
 import Modal from '@mui/material/Modal';
-import { v4 as uuidv4 } from 'uuid';
 import { UseShoppingCart } from '../../store/ShoppingCartProvider';
 import ProductCard from '../ProductCard';
 
@@ -27,7 +26,7 @@ export default function CartModal() {
           <div className='shoping-cart-list'>
             {shoppingCart.map((item) => (
               <ProductCard
-                key={uuidv4()}
+                key={item.id}
                 id={item.id}
                 name={item.name}
                 description={item.description}

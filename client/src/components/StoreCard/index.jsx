@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { UseStores } from '../../store/StoreProvider';
 
@@ -13,6 +14,7 @@ const StoreCard = ({
   bannerAlt,
   rating,
   minDelivery,
+  id,
 }) => {
   const { cuisines: cuisinesList, cuisinesLoading } = UseStores();
   const [filtered, setFiltered] = useState([]);
@@ -27,7 +29,7 @@ const StoreCard = ({
   }, [cuisinesLoading]);
 
   return (
-    <div className='store-card'>
+    <Link to={id} className='store-card'>
       <div className='image'>
         <img src={banner1} alt={bannerAlt} />
       </div>
@@ -43,7 +45,7 @@ const StoreCard = ({
       <div className='rating'>
         <span>⭐{rating}</span>
       </div>
-    </div>
+    </Link>
   );
 };
 

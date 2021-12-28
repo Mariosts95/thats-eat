@@ -1,23 +1,22 @@
 import React from 'react';
 
-import { v4 as uuidv4 } from 'uuid';
-
-import useFetch from '../hooks/useFetch';
+import { UseStores } from '../store/StoreProvider';
 
 import './StoresList.scoped.scss';
 import StoreCard from '../components/StoreCard';
 
-const Store = () => {
-  const { data, loading } = useFetch(`http://localhost:3000/stores`);
+const StoreList = () => {
+  const { storesList, storesLoading } = UseStores();
 
-  if (loading || !data) return <div>Loading...</div>;
+  if (storesLoading || !storesList) return <div>Loading...</div>;
 
   return (
     <div className='stores-list'>
-      <h2>{data.count} Available Stores:</h2>
-      {data.stores.map((store) => (
+      <h2>{storesList.count} Available Stores:</h2>
+      {storesList.stores.map((store) => (
         <StoreCard
-          key={uuidv4()}
+          key={store._id}
+          id={`/stores/${store._id}`}
           name={store.name}
           cuisines={store.cuisines}
           banner={store.imgPath}
@@ -30,4 +29,4 @@ const Store = () => {
   );
 };
 
-export default Store;
+export default StoreList;
