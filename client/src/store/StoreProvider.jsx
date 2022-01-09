@@ -13,6 +13,9 @@ const StoresProvider = ({ children }) => {
   const { data: storesList, loading: storesLoading } = useFetch(
     `http://localhost:3000/stores`
   );
+  const { data: categoriesList, loading: categoriesLoading } = useFetch(
+    `http://localhost:3000/categories`
+  );
 
   useEffect(() => {
     if (!cuisinesLoading) setCuisines(cuisinesList);
@@ -20,7 +23,14 @@ const StoresProvider = ({ children }) => {
 
   return (
     <StoresContext.Provider
-      value={{ cuisines, cuisinesLoading, storesList, storesLoading }}
+      value={{
+        cuisines,
+        cuisinesLoading,
+        storesList,
+        storesLoading,
+        categoriesList,
+        categoriesLoading,
+      }}
     >
       {children}
     </StoresContext.Provider>

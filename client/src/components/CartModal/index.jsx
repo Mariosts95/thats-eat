@@ -24,22 +24,16 @@ export default function CartModal() {
         <div className='shoping-cart'>
           <h2>Shoping Cart</h2>
           <div className='shoping-cart-list'>
-            {shoppingCart.map((item) => (
+            {shoppingCart.items.map((product) => (
               <ProductCard
-                key={item.id}
-                id={item.id}
-                name={item.name}
-                description={item.description}
-                imgPath={item.imgPath}
-                imgAlt={item.imgAlt}
-                price={item.price}
+                key={product._id}
+                id={product._id}
+                product={product}
                 cart
-                onClick={() => {
-                  removeFromCart(item);
-                }}
               />
             ))}
           </div>
+          <h2>Total: {shoppingCart.total}</h2>
         </div>
       </Modal>
     </div>,

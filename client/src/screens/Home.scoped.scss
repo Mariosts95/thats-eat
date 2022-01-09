@@ -1,0 +1,33 @@
+.homepage-container {
+  padding: 0 20px;
+  .homepage-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    .left,
+    .right {
+      flex-basis: 50%;
+    }
+    .right {
+      max-width: 50%;
+      height: 100%;
+    }
+  }
+  .address-input {
+    max-width: 500px;
+    position: relative;
+    .next-btn-container {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+  }
+  button {
+    height: 100%;
+    svg {
+      fill: $primaryColor;
+    }
+  }
+}

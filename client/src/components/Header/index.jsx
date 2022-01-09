@@ -23,7 +23,7 @@ const Header = () => {
         <div className='nav-container'>
           <Button
             className='cart-btn'
-            onClick={shoppingCart.length > 0 ? openCart : closeCart}
+            onClick={shoppingCart.items.length > 0 ? openCart : closeCart}
           >
             <ShoppingCartIcon />
           </Button>

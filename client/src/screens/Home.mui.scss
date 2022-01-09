@@ -1,0 +1,25 @@
+.homepage-container {
+  .MuiFormControl-root {
+    svg {
+      fill: $primaryColor;
+    }
+    label {
+      color: #fff;
+    }
+    fieldset {
+      border-color: #fff;
+    }
+    .Mui-focused {
+      fieldset,
+      fieldset:hover {
+        border-color: $primaryColor;
+      }
+    }
+    .MuiAutocomplete-clearIndicator {
+      display: none;
+    }
+  }
+  .MuiAutocomplete-input {
+    color: #fff;
+  }
+}
