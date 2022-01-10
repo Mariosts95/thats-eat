@@ -7,9 +7,9 @@ import StoreCard from '../components/StoreCard';
 
 const StoreList = () => {
   const { storesList, storesLoading, cuisines } = UseStores();
-  const [filter, setFilter] = useState();
-  const getCuisine = (e) => {
-    if (e.target.value == 'all') setFilter('');
+  const [filter, setFilter] = useState('all');
+
+  const getFilter = (e) => {
     setFilter(e.target.value);
   };
 
@@ -23,7 +23,7 @@ const StoreList = () => {
         </div>
         <div className='filters'>
           <label>Filter: </label>
-          <select name='cuisines' id='cuisines' onChange={getCuisine}>
+          <select name='cuisines' id='cuisines' onChange={getFilter}>
             <option key='all' value='all'>
               All
             </option>
