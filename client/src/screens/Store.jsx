@@ -1,65 +1,32 @@
 import React from 'react';
-import ProductsList from '../components/ProductsList';
-import { UseShoppingCart } from '../store/ShoppingCartProvider';
-import espressoImg from '../assets/images/espresso.png';
-import freddoEspressoImg from '../assets/images/freddo-espresso.jpg';
-import cappucinoImg from '../assets/images/cappuchino.webp';
-import freddoCappucinoImg from '../assets/images/freddo-cappuccino.jpg';
-import ShoppingCart from '../components/ShoppingCart';
-import ProductCard from '../components/ProductCard';
-import { v4 as uuidv4 } from 'uuid';
+import { UseStores } from '../store/StoreProvider';
 
-const products = [
-  {
-    id: 1,
-    name: 'Espresso',
-    description: '100% Arabica',
-    imgPath: espressoImg,
-    imgAlt: 'product',
-    price: '1.20',
-  },
-  {
-    id: 2,
-    name: 'Freddo Espresso',
-    description: '100% Arabica',
-    imgPath: freddoEspressoImg,
-    imgAlt: 'product',
-    price: '1.80',
-  },
-  {
-    id: 3,
-    name: 'Cappucino',
-    description: '100% Arabica',
-    imgPath: cappucinoImg,
-    imgAlt: 'product',
-    price: '1.80',
-  },
-  {
-    id: 4,
-    name: 'Freddo Cappucino',
-    description: '100% Arabica',
-    imgPath: freddoCappucinoImg,
-    imgAlt: 'product',
-    price: '2.00',
-  },
-];
+import ProductCard from '../components/ProductCard';
+import { useParams } from 'react-router-dom';
+
+import './Store.scoped.scss';
 
 const Store = () => {
-  const { addToCart } = UseShoppingCart();
+  let { id } = useParams();
+  const { storesList, storesLoading } = UseStores();
+
+  if (storesLoading || !storesList) return <div>Loading...</div>;
+
+  const store = storesList.stores.find((x) => (x._id === id));
+
   return (
     <>
-      <h2>Products</h2>
-      {products.map((product) => (
+      <div className='banner'>
+        <img src={`/src/assets/images/${id}/banner.jpg`} alt='' />
+      </div>
+      <h1>{store.name}</h1>
+      <h2>Products ({store.menu.length}):</h2>
+      {store.menu.map((product) => (
         <ProductCard
-          key={uuidv4()}
-          name={product.name}
-          description={product.description}
-          imgPath={product.imgPath}
-          imgAlt={product.imgAlt}
-          price={product.price}
-          onClick={() => {
-            addToCart(product);
-          }}
+          key={product._id}
+          id={product._id}
+          imgPath={`/src/assets/images/${id}/${product._id}.jpg`}
+          product={product}
         />
       ))}
     </>

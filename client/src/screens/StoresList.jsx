@@ -1,34 +1,56 @@
-import React from 'react';
-import { UseShoppingCart } from '../store/ShoppingCartProvider';
-import ProductCard from '../components/ProductCard';
+import { useState } from 'react';
+
+import { UseStores } from '../store/StoreProvider';
+
+import './StoresList.scoped.scss';
 import StoreCard from '../components/StoreCard';
-import { v4 as uuidv4 } from 'uuid';
-import useFetch from '../hooks/useFetch';
 
-const Store = () => {
-  const { addToCart } = UseShoppingCart();
+const StoreList = () => {
+  const { storesList, storesLoading, cuisines } = UseStores();
+  const [filter, setFilter] = useState('all');
 
-  const { data, loading } = useFetch(`http://localhost:3000/stores`);
-  console.log(data);
+  const getFilter = (e) => {
+    setFilter(e.target.value);
+  };
 
-  if (loading || !data) return <div>Loading...</div>;
+  if (storesLoading || !storesList || !cuisines) return <div>Loading...</div>;
 
   return (
-    <>
-      <h2>Stores:</h2>
-      {data.stores.map((store) => (
-        <StoreCard
-          key={uuidv4()}
-          name={store.name}
-          cuisines={store.cuisines}
-          banner={store.imgPath}
-          imgAlt={store.imgAlt}
-          rating={store.rating}
-          minDelivery={store.minDelivery}
-        />
-      ))}
-    </>
+    <div className='stores-list'>
+      <div className='stores-top-container'>
+        <div className='title'>
+          <h2>{storesList.count} Available Stores:</h2>
+        </div>
+        <div className='filters'>
+          <label>Filter: </label>
+          <select name='cuisines' id='cuisines' onChange={getFilter}>
+            <option key='all' value='all'>
+              All
+            </option>
+            {cuisines.map((cuisine) => (
+              <option key={cuisine._id} value={cuisine._id}>
+                {cuisine.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+      {storesList.stores
+        .filter((store) => filter == 'all' || store.cuisines.includes(filter))
+        .map((store) => (
+          <StoreCard
+            key={store._id}
+            id={`/stores/${store._id}`}
+            name={store.name}
+            cuisines={store.cuisines}
+            banner={store.imgPath}
+            imgAlt={store.imgAlt}
+            rating={store.rating}
+            minDelivery={store.minDelivery}
+          />
+        ))}
+    </div>
   );
 };
 
-export default Store;
+export default StoreList;

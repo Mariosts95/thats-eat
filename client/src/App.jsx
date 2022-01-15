@@ -1,15 +1,33 @@
-import ProductsList from './screens/ProductsList';
+import { Route, Routes, Outlet } from 'react-router-dom';
+
+import Header from './components/Header';
 import StoresList from './screens/StoresList';
-import Sandbox from './screens/Sandbox';
-import Dummy from './screens/dummy';
+import Home from './screens/Home';
 import ShoppingCartProvider from './store/ShoppingCartProvider';
-import ShoppingCart from './components/ShoppingCart';
+import StoreProviver from './store/StoreProvider';
+import CartModal from './components/CartModal';
+import Store from './screens/Store';
 
 function App() {
   return (
     <ShoppingCartProvider>
-      <ProductsList />
-      <StoresList />
+      <Header />
+      <CartModal />
+
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route
+          path='/stores/'
+          element={
+            <StoreProviver>
+              <Outlet />
+            </StoreProviver>
+          }
+        >
+          <Route index element={<StoresList />} />
+          <Route path=':id' element={<Store />} />
+        </Route>
+      </Routes>
     </ShoppingCartProvider>
   );
 }

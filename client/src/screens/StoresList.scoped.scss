@@ -1,0 +1,14 @@
+.stores-list {
+  padding: 0 30px 50px;
+  .stores-top-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 950px;
+    width: 100%;
+    margin: 0 auto 30px;
+  }
+  .title {
+    margin: 0 30px 0 0;
+  }
+}

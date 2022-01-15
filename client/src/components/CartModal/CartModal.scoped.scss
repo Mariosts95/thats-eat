@@ -1,0 +1,16 @@
+.shoping-cart {
+  max-width: 750px;
+  width: 100%;
+  margin: 0 auto;
+  position: absolute;
+  padding: 20px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 4px;
+  background-color: $secondaryColor;
+  .shoping-cart-list {
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+}

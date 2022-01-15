@@ -7,20 +7,13 @@ import { v4 as uuidv4 } from 'uuid';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-fade';
+// Styles
+import './Slider.scoped.scss';
 
-const imgStyles = {
-  display: 'block',
-  objectFit: 'cover',
-  objectPosition: 'center',
-  width: '100%',
-  height: 'auto',
-};
-
-const Slider = ({ images, styles }) => {
+const Slider = ({ images }) => {
   return (
     <Swiper
       modules={[Autoplay, EffectFade]}
-      style={{ ...styles }}
       speed={1200}
       spaceBetween={0}
       slidesPerView={1}
@@ -32,7 +25,7 @@ const Slider = ({ images, styles }) => {
     >
       {images.map((slide) => (
         <SwiperSlide key={uuidv4()}>
-          <img src={slide} style={{ ...imgStyles }} />
+          <img src={slide} />
         </SwiperSlide>
       ))}
     </Swiper>

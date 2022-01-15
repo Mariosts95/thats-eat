@@ -9,7 +9,6 @@
   width: 100%;
   cursor: pointer;
   &:first-of-type {
-    background-color: red;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
   }
@@ -25,6 +24,16 @@
     margin: 0 15px 0 0;
     img {
       border-radius: 4px;
+    }
+  }
+  .cuisines {
+    span {
+      font-weight: 500;
+      font-style: italic;
+      margin-right: 5px;
+      &:not(:last-child):after {
+        content: ',';
+      }
     }
   }
   .rating {

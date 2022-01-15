@@ -1,6 +1,7 @@
 .product-card {
   display: flex;
   align-items: center;
+  justify-content: center;
   background-color: #fff;
   color: #000;
   border: 1px solid;
@@ -10,20 +11,29 @@
   margin: 0 auto 15px;
   padding: 25px;
   .image {
-    width: 150px;
-    height: 150px;
-    border-radius: 4px;
+    flex-basis: 33.3333333333%;
+    max-width: 150px;
+    width: 100%;
     margin: 0 30px 0 0;
     img {
+      border-radius: 4px;
       object-fit: cover;
     }
+  }
+  .info {
+    flex-basis: 66.666666666%;
   }
   .name {
     margin: 0 0 15px;
   }
-  .description {
+  .quantity-container {
+    input {
+      max-width: 60px;
+      width: 100%;
+      margin: 0 30px 0 0;
+      padding: 10px;
+    }
   }
-
   button {
     background-color: $primaryColor;
     border: none;
@@ -32,6 +42,7 @@
     cursor: pointer;
     text-transform: uppercase;
     font-weight: 900;
+    display: inline-block;
   }
   button:hover {
     opacity: 0.7;
