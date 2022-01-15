@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Outlet } from 'react-router-dom';
 
 import Header from './components/Header';
 import StoresList from './screens/StoresList';
@@ -13,15 +13,21 @@ function App() {
     <ShoppingCartProvider>
       <Header />
       <CartModal />
-      <StoreProviver>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/stores/'>
-            <Route index element={<StoresList />} />
-            <Route path=':id' element={<Store />} />
-          </Route>
-        </Routes>
-      </StoreProviver>
+
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route
+          path='/stores/'
+          element={
+            <StoreProviver>
+              <Outlet />
+            </StoreProviver>
+          }
+        >
+          <Route index element={<StoresList />} />
+          <Route path=':id' element={<Store />} />
+        </Route>
+      </Routes>
     </ShoppingCartProvider>
   );
 }

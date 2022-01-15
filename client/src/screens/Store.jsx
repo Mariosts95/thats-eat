@@ -12,7 +12,7 @@ const Store = () => {
 
   if (storesLoading || !storesList) return <div>Loading...</div>;
 
-  const store = storesList.stores.find((x) => (x._id = id));
+  const store = storesList.stores.find((x) => (x._id === id));
 
   return (
     <>

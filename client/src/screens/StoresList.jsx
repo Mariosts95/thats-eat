@@ -36,10 +36,7 @@ const StoreList = () => {
         </div>
       </div>
       {storesList.stores
-        .filter((store) => {
-          if (filter == 'all') return true;
-          return store.cuisines.includes(filter);
-        })
+        .filter((store) => filter == 'all' || store.cuisines.includes(filter))
         .map((store) => (
           <StoreCard
             key={store._id}
