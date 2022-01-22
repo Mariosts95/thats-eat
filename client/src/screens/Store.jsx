@@ -1,8 +1,9 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
+
 import { UseStores } from '../store/StoreProvider';
 
 import ProductCard from '../components/ProductCard';
-import { useParams } from 'react-router-dom';
 
 import './Store.scoped.scss';
 
@@ -12,7 +13,7 @@ const Store = () => {
 
   if (storesLoading || !storesList) return <div>Loading...</div>;
 
-  const store = storesList.stores.find((x) => (x._id === id));
+  const store = storesList.stores.find((x) => x._id === id);
 
   return (
     <>
@@ -23,6 +24,7 @@ const Store = () => {
       <h2>Products ({store.menu.length}):</h2>
       {store.menu.map((product) => (
         <ProductCard
+          storeId={id}
           key={product._id}
           id={product._id}
           imgPath={`/src/assets/images/${id}/${product._id}.jpg`}
