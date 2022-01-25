@@ -28,6 +28,7 @@ export default function CartModal() {
               <ProductCard
                 key={product._id}
                 id={product._id}
+                imgPath={`/src/assets/images/${shoppingCart.storeId}/${product._id}.jpg`}
                 product={product}
                 cart
               />
