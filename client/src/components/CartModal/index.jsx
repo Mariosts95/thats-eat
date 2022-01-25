@@ -11,7 +11,7 @@ export default function CartModal() {
   const { shoppingCart, removeFromCart, openCart, closeCart, open } =
     UseShoppingCart();
 
-  if (shoppingCart.length === 0) return null;
+  if (shoppingCart.items.length === 0) return null;
 
   return createPortal(
     <div>

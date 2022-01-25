@@ -20,7 +20,6 @@ const ShoppingCartProvider = ({ children }) => {
 
     setShoppingCart((prev) => ({ ...prev, storeId }));
     const existingCartItem = shoppingCart.items.find((x) => x._id === item._id);
-    console.log(existingCartItem);
 
     if (existingCartItem) {
       console.log('exist');
@@ -54,7 +53,12 @@ const ShoppingCartProvider = ({ children }) => {
   };
 
   const removeFromCart = (id) => {
-    setShoppingCart((prev) => prev.filter((item) => item !== id));
+    setShoppingCart((prev) => {
+      return {
+        ...prev,
+        items: prev.items.filter((item) => item._id !== id),
+      };
+    });
   };
 
   return (

@@ -5,7 +5,7 @@ import { UseShoppingCart } from '../../store/ShoppingCartProvider';
 import './ProductCard.scoped.scss';
 
 const ProductCard = ({ cart, id, imgPath, product, storeId }) => {
-  const { addToCart } = UseShoppingCart();
+  const { addToCart, removeFromCart } = UseShoppingCart();
 
   const [amount, setAmount] = useState(product.amount ? product.amount : 1);
 
@@ -37,20 +37,29 @@ const ProductCard = ({ cart, id, imgPath, product, storeId }) => {
           {cart && (
             <button
               onClick={() => {
-                // product.amount = amount;
                 setAmount(product.amount);
               }}
             >
               Update
             </button>
           )}
-          <button
-            onClick={() => {
-              addToCart(product, storeId, amount);
-            }}
-          >
-            {cart ? 'Remove from' : 'Add to'} cart
-          </button>
+          {cart ? (
+            <button
+              onClick={() => {
+                removeFromCart(product._id);
+              }}
+            >
+              Remove from cart
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                addToCart(product, storeId, amount);
+              }}
+            >
+              Add to cart
+            </button>
+          )}
         </div>
       </div>
     </div>
