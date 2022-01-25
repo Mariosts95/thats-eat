@@ -4,8 +4,8 @@ import { UseShoppingCart } from '../../store/ShoppingCartProvider';
 // styles
 import './ProductCard.scoped.scss';
 
-const ProductCard = ({ cart, id, imgPath, product }) => {
-  const { addToCart } = UseShoppingCart();
+const ProductCard = ({ cart, id, imgPath, product, storeId }) => {
+  const { addToCart, removeFromCart } = UseShoppingCart();
 
   const [amount, setAmount] = useState(product.amount ? product.amount : 1);
 
@@ -31,29 +31,35 @@ const ProductCard = ({ cart, id, imgPath, product }) => {
             min={1}
             max={20}
             onChange={(e) => {
-              console.log(amount);
               setAmount(parseInt(e.currentTarget.value));
             }}
           />
           {cart && (
             <button
               onClick={() => {
-                product.amount = amount;
                 setAmount(product.amount);
               }}
             >
               Update
             </button>
           )}
-          <button
-            onClick={() => {
-              product.amount = amount;
-              addToCart(product);
-              console.log(product);
-            }}
-          >
-            {cart ? 'Remove from' : 'Add to'} cart
-          </button>
+          {cart ? (
+            <button
+              onClick={() => {
+                removeFromCart(product._id);
+              }}
+            >
+              Remove from cart
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                addToCart(product, storeId, amount);
+              }}
+            >
+              Add to cart
+            </button>
+          )}
         </div>
       </div>
     </div>

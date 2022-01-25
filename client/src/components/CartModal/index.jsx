@@ -11,7 +11,7 @@ export default function CartModal() {
   const { shoppingCart, removeFromCart, openCart, closeCart, open } =
     UseShoppingCart();
 
-  if (shoppingCart.length === 0) return null;
+  if (shoppingCart.items.length === 0) return null;
 
   return createPortal(
     <div>
@@ -28,6 +28,7 @@ export default function CartModal() {
               <ProductCard
                 key={product._id}
                 id={product._id}
+                imgPath={`/src/assets/images/${shoppingCart.storeId}/${product._id}.jpg`}
                 product={product}
                 cart
               />

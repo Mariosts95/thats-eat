@@ -6,44 +6,43 @@ const UseShoppingCart = () => useContext(ShoppingCartContext);
 
 const ShoppingCartProvider = ({ children }) => {
   const [shoppingCart, setShoppingCart] = useState({
+    storeId: '',
     items: [],
     total: 0,
   });
+
   const [open, setOpen] = useState(false);
   const openCart = () => setOpen(true);
   const closeCart = () => setOpen(false);
 
-  const addToCart = (item) => {
+  const addToCart = (item, storeId, amount) => {
     // setShoppingCart((prev) => [...prev, item]);
-    const itemExistsOnCartIndex = shoppingCart.items.findIndex(
-      (x) => x.id === item.id
-    );
-    const existingCartItem = shoppingCart.items[itemExistsOnCartIndex];
 
-    console.log(itemExistsOnCartIndex);
-    console.log(existingCartItem);
+    setShoppingCart((prev) => ({ ...prev, storeId }));
+    const existingCartItem = shoppingCart.items.find((x) => x._id === item._id);
 
     if (existingCartItem) {
-      console.log('exists');
-      const updatedItem = {
-        ...existingCartItem,
-        amount: existingCartItem.amount + item.amount,
-      };
-      console.log({ updatedItem });
-
+      console.log('exist');
       setShoppingCart((prev) => {
+        const updatedItem = {
+          ...existingCartItem,
+          amount: existingCartItem.amount + amount,
+        };
+
         return {
           ...prev,
+          // filter & map to change amount
           items: [
-            ...prev.items,
-            (prev.items[itemExistsOnCartIndex] = updatedItem),
+            ...prev.items.filter((item) => item._id !== existingCartItem._id),
+            updatedItem,
           ],
           total: prev.total + item.price * item.amount,
         };
       });
     } else {
-      console.log('not exists');
+      console.log('not exist');
       setShoppingCart((prev) => {
+        item.amount = amount;
         return {
           ...prev,
           items: [...prev.items, item],
@@ -51,18 +50,15 @@ const ShoppingCartProvider = ({ children }) => {
         };
       });
     }
-
-    // setShoppingCart((prev) => {
-    //   return {
-    //     ...prev,
-    //     items: [...prev.items, item],
-    //     total: prev.total + item.price * item.amount,
-    //   };
-    // });
   };
 
   const removeFromCart = (id) => {
-    setShoppingCart((prev) => prev.filter((item) => item !== id));
+    setShoppingCart((prev) => {
+      return {
+        ...prev,
+        items: prev.items.filter((item) => item._id !== id),
+      };
+    });
   };
 
   return (
