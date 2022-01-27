@@ -5,13 +5,16 @@ import Modal from '@mui/material/Modal';
 import { UseShoppingCart } from '../../store/ShoppingCartProvider';
 import ProductCard from '../ProductCard';
 
+import calcTotal from '../../helpers/calcTotal';
+
 import './CartModal.scoped.scss';
 
 export default function CartModal() {
-  const { shoppingCart, removeFromCart, openCart, closeCart, open } =
-    UseShoppingCart();
+  const { shoppingCart, closeCart, open } = UseShoppingCart();
 
   if (shoppingCart.items.length === 0) return null;
+
+  const total = calcTotal(shoppingCart.items, 2);
 
   return createPortal(
     <div>
@@ -34,7 +37,7 @@ export default function CartModal() {
               />
             ))}
           </div>
-          <h2>Total: {shoppingCart.total}</h2>
+          <h2>Total:{total}</h2>
         </div>
       </Modal>
     </div>,
