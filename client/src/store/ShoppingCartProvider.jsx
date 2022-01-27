@@ -8,7 +8,6 @@ const ShoppingCartProvider = ({ children }) => {
   const [shoppingCart, setShoppingCart] = useState({
     storeId: '',
     items: [],
-    total: 0,
   });
 
   const [open, setOpen] = useState(false);
@@ -16,13 +15,11 @@ const ShoppingCartProvider = ({ children }) => {
   const closeCart = () => setOpen(false);
 
   const addToCart = (item, storeId, amount) => {
-    // setShoppingCart((prev) => [...prev, item]);
-
     setShoppingCart((prev) => ({ ...prev, storeId }));
     const existingCartItem = shoppingCart.items.find((x) => x._id === item._id);
 
     if (existingCartItem) {
-      console.log('exist');
+      // product already exist
       setShoppingCart((prev) => {
         const updatedItem = {
           ...existingCartItem,
@@ -31,22 +28,20 @@ const ShoppingCartProvider = ({ children }) => {
 
         return {
           ...prev,
-          // filter & map to change amount
           items: [
             ...prev.items.filter((item) => item._id !== existingCartItem._id),
             updatedItem,
           ],
-          total: prev.total + item.price * item.amount,
         };
       });
     } else {
-      console.log('not exist');
+      //product doesn't exist
       setShoppingCart((prev) => {
+        // set the amount
         item.amount = amount;
         return {
           ...prev,
           items: [...prev.items, item],
-          total: prev.total + item.price * item.amount,
         };
       });
     }
