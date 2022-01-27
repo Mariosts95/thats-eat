@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { UseAddress } from '../store/AddressProvider';
+import { useNavigate } from 'react-router-dom';
 // Components
 import Slider from '../components/Slider';
 
@@ -24,6 +25,19 @@ import './Home.scoped.scss';
 import './Home.mui.scss';
 
 const Home = () => {
+  const { updateAddress } = UseAddress();
+  const navigate = useNavigate();
+
+  let inputData;
+  const handleInput = (data) => {
+    inputData = data;
+  };
+
+  const handleClick = () => {
+    updateAddress(inputData);
+    inputData && navigate('/stores');
+  };
+
   return (
     <>
       <div className='homepage-container'>
@@ -34,17 +48,12 @@ const Home = () => {
               <Autocomplete
                 id='location-input'
                 freeSolo
-                options={[
-                  'Mock address 1',
-                  'Mock address 2',
-                  'Mock address 3',
-                  'Mock address 4',
-                ]}
+                options={[]}
                 renderInput={(params) => (
                   <>
                     <TextField
                       {...params}
-                      onChange={(e) => console.log(e.target.value)}
+                      onChange={(e) => handleInput(e.target.value)}
                       InputProps={{
                         ...params.InputProps,
                         startAdornment: (
@@ -59,7 +68,7 @@ const Home = () => {
                 )}
               ></Autocomplete>
               <div className='next-btn-container'>
-                <Button>
+                <Button onClick={handleClick}>
                   <NavigateNextIcon />
                 </Button>
               </div>
