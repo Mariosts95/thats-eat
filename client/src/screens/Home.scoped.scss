@@ -8,6 +8,7 @@
     .left,
     .right {
       flex-basis: 50%;
+      width: 100%;
     }
     .right {
       max-width: 50%;
@@ -28,6 +29,20 @@
     height: 100%;
     svg {
       fill: $primaryColor;
+    }
+  }
+  @media (max-width: 768px) {
+    .homepage-wrapper {
+      flex-direction: column;
+      gap: 50px;
+      .left,
+      .right {
+        flex-basis: 100%;
+      }
+      .right {
+        max-width: 100%;
+        height: auto;
+      }
     }
   }
 }

@@ -5,7 +5,7 @@ import { UseShoppingCart } from '../../store/ShoppingCartProvider';
 import './ProductCard.scoped.scss';
 
 const ProductCard = ({ cart, id, imgPath, product, storeId }) => {
-  const { addToCart, removeFromCart } = UseShoppingCart();
+  const { addToCart, removeFromCart, updateCartItem } = UseShoppingCart();
 
   const [amount, setAmount] = useState(product.amount ? product.amount : 1);
 
@@ -22,7 +22,7 @@ const ProductCard = ({ cart, id, imgPath, product, storeId }) => {
         <h3 className='name'>{name}</h3>
         <p className='description'>{description}</p>
         <p className='price'>
-          <span>{cart ? `${amount}x` : ''}</span>€{price}
+          <span>{cart ? `${amount}x` : ''}</span>€{price.toFixed(2)}
         </p>
         <div className='quantity-container'>
           <input
@@ -36,8 +36,9 @@ const ProductCard = ({ cart, id, imgPath, product, storeId }) => {
           />
           {cart && (
             <button
+              className='update'
               onClick={() => {
-                setAmount(product.amount);
+                updateCartItem(id, amount);
               }}
             >
               Update

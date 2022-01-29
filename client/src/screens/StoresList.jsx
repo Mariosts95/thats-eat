@@ -57,7 +57,7 @@ const StoreList = () => {
             id={`/stores/${store._id}`}
             name={store.name}
             cuisines={store.cuisines}
-            banner={store.imgPath}
+            banner={store._id}
             imgAlt={store.imgAlt}
             rating={store.rating}
             minDelivery={store.minDelivery}

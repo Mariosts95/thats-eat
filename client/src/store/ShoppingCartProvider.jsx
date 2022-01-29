@@ -48,12 +48,19 @@ const ShoppingCartProvider = ({ children }) => {
   };
 
   const removeFromCart = (id) => {
-    setShoppingCart((prev) => {
-      return {
-        ...prev,
-        items: prev.items.filter((item) => item._id !== id),
-      };
-    });
+    setShoppingCart((prev) => ({
+      ...prev,
+      items: prev.items.filter((item) => item._id !== id),
+    }));
+  };
+
+  const updateCartItem = (id, amount) => {
+    setShoppingCart((prev) => ({
+      ...prev,
+      items: prev.items.map((item) =>
+        item._id === id ? { ...item, amount: amount } : item
+      ),
+    }));
   };
 
   return (
@@ -65,6 +72,7 @@ const ShoppingCartProvider = ({ children }) => {
         openCart,
         closeCart,
         open,
+        updateCartItem,
       }}
     >
       {children}

@@ -5,8 +5,6 @@ import { UseStores } from '../../store/StoreProvider';
 
 import './StoreCard.scoped.scss';
 
-import banner1 from '../../assets/images/dummy-store-banner.jpg';
-
 const StoreCard = ({
   name,
   cuisines,
@@ -31,7 +29,7 @@ const StoreCard = ({
   return (
     <Link to={id} className='store-card'>
       <div className='image'>
-        <img src={banner1} alt={bannerAlt} />
+        <img src={`/src/assets/images/${banner}/banner.jpg`} alt={bannerAlt} />
       </div>
       <div className='info'>
         <h3>{name}</h3>
