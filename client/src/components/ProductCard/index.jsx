@@ -5,7 +5,7 @@ import { UseShoppingCart } from '../../store/ShoppingCartProvider';
 import './ProductCard.scoped.scss';
 
 const ProductCard = ({ cart, id, imgPath, product, storeId }) => {
-  const { addToCart, removeFromCart } = UseShoppingCart();
+  const { addToCart, removeFromCart, updateCartItem } = UseShoppingCart();
 
   const [amount, setAmount] = useState(product.amount ? product.amount : 1);
 
@@ -38,7 +38,7 @@ const ProductCard = ({ cart, id, imgPath, product, storeId }) => {
             <button
               className='update'
               onClick={() => {
-                setAmount(product.amount);
+                updateCartItem(id, amount);
               }}
             >
               Update
