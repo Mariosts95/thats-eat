@@ -31,7 +31,7 @@ const StoreCard = ({
   return (
     <Link to={id} className='store-card'>
       <div className='image'>
-        <img src={banner1} alt={bannerAlt} />
+        <img src={`/src/assets/images/${banner}/banner.jpg`} alt={bannerAlt} />
       </div>
       <div className='info'>
         <h3>{name}</h3>
