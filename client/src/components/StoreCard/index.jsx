@@ -5,8 +5,6 @@ import { UseStores } from '../../store/StoreProvider';
 
 import './StoreCard.scoped.scss';
 
-import banner1 from '../../assets/images/dummy-store-banner.jpg';
-
 const StoreCard = ({
   name,
   cuisines,
