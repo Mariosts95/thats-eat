@@ -33,8 +33,11 @@ const Store = () => {
       <div className='banner'>
         <img src={`/src/assets/images/${id}/banner.jpg`} alt='' />
       </div>
-      <h1>{store.name}</h1>
-      <h2>Products ({store.menu.length}):</h2>
+      <div className='store-container'>
+        <h1>{store.name}</h1>
+        <h2>Products ({store.menu.length}):</h2>
+      </div>
+
       {categories.map((category) => (
         <div className='category-container' key={category}>
           <h3>{category}:</h3>

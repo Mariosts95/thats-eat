@@ -36,6 +36,7 @@ const ProductCard = ({ cart, id, imgPath, product, storeId }) => {
           />
           {cart && (
             <button
+              className='update'
               onClick={() => {
                 setAmount(product.amount);
               }}
