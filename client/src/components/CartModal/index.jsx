@@ -1,5 +1,6 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
+import { useNavigate } from 'react-router-dom';
 
 import Modal from '@mui/material/Modal';
 import { UseShoppingCart } from '../../store/ShoppingCartProvider';
@@ -11,6 +12,7 @@ import './CartModal.scoped.scss';
 
 export default function CartModal() {
   const { shoppingCart, closeCart, open } = UseShoppingCart();
+  const navigate = useNavigate();
 
   if (shoppingCart.items.length === 0) return null;
 
@@ -37,7 +39,18 @@ export default function CartModal() {
               />
             ))}
           </div>
-          <h2>Total:{total}</h2>
+          <div className='bot'>
+            <h2>Total: {total}€</h2>
+            <button
+              className='checkout'
+              onClick={() => {
+                navigate('/checkout');
+                closeCart();
+              }}
+            >
+              Checkout
+            </button>
+          </div>
         </div>
       </Modal>
     </div>,

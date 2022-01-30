@@ -38,7 +38,7 @@ const StoreCard = ({
             <span key={cuisine._id}>{cuisine.name}</span>
           ))}
         </p>
-        <span className='min'>Min. €{minDelivery}</span>
+        <span className='min'>Min. {minDelivery}€</span>
       </div>
       <div className='rating'>
         <span>⭐{rating}</span>

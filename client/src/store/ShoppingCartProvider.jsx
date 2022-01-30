@@ -63,6 +63,14 @@ const ShoppingCartProvider = ({ children }) => {
     }));
   };
 
+  const emptyCart = () => {
+    setShoppingCart((prev) => ({
+      ...prev,
+      storeId: '',
+      items: [],
+    }));
+  };
+
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -73,6 +81,7 @@ const ShoppingCartProvider = ({ children }) => {
         closeCart,
         open,
         updateCartItem,
+        emptyCart,
       }}
     >
       {children}

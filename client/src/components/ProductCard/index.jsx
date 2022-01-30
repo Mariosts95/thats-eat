@@ -22,7 +22,8 @@ const ProductCard = ({ cart, id, imgPath, product, storeId }) => {
         <h3 className='name'>{name}</h3>
         <p className='description'>{description}</p>
         <p className='price'>
-          <span>{cart ? `${amount}x` : ''}</span>€{price.toFixed(2)}
+          <span>{cart ? `${amount}x` : ''}</span>
+          {price.toFixed(2)}€
         </p>
         <div className='quantity-container'>
           <input
