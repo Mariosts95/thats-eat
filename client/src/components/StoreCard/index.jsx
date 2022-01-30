@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+// Context
 import { UseStores } from '../../store/StoreProvider';
 
+// Styles
 import './StoreCard.scoped.scss';
 
 const StoreCard = ({
@@ -17,6 +19,7 @@ const StoreCard = ({
   const { cuisines: cuisinesList, cuisinesLoading } = UseStores();
   const [filtered, setFiltered] = useState([]);
 
+  // map through cuisines to get the names from their id
   useEffect(() => {
     if (!cuisinesLoading) {
       const filtered = cuisines.map((value) =>
@@ -38,7 +41,7 @@ const StoreCard = ({
             <span key={cuisine._id}>{cuisine.name}</span>
           ))}
         </p>
-        <span className='min'>Min. €{minDelivery}</span>
+        <span className='min'>Min. {minDelivery}€</span>
       </div>
       <div className='rating'>
         <span>⭐{rating}</span>

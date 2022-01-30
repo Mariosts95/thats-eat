@@ -1,12 +1,16 @@
 import { NavLink } from 'react-router-dom';
 
+// Context
 import { UseShoppingCart } from '../../store/ShoppingCartProvider';
 
+// MUI
 import Button from '@mui/material/Button';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
+// Styles
 import './Header.scoped.scss';
 
+// Assets
 import logo from '../../assets/images/logo_transparent_2.png';
 
 const Header = () => {

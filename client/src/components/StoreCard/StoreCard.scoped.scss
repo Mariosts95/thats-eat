@@ -40,4 +40,11 @@
   .rating {
     margin-left: auto;
   }
+  @media (max-width: 660px) {
+    flex-direction: column;
+    align-items: flex-start;
+    .image {
+      margin: 0 auto 15px;
+    }
+  }
 }

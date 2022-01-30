@@ -1,13 +1,18 @@
 import { Route, Routes, Outlet } from 'react-router-dom';
 
+// Components
 import Header from './components/Header';
 import StoresList from './screens/StoresList';
 import Home from './screens/Home';
+import Store from './screens/Store';
+import CartModal from './components/CartModal';
+import Checkout from './screens/Checkout';
+import CompleteOrder from './screens/CompleteOrder';
+
+// Context
 import ShoppingCartProvider from './store/ShoppingCartProvider';
 import AddressProvider from './store/AddressProvider';
 import StoreProviver from './store/StoreProvider';
-import CartModal from './components/CartModal';
-import Store from './screens/Store';
 
 function App() {
   return (
@@ -28,6 +33,8 @@ function App() {
             <Route index element={<StoresList />} />
             <Route path=':id' element={<Store />} />
           </Route>
+          <Route path='/checkout' element={<Checkout />} />
+          <Route path='/complete' element={<CompleteOrder />} />
         </Routes>
       </ShoppingCartProvider>
     </AddressProvider>

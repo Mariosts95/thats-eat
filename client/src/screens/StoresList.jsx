@@ -1,22 +1,27 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+// Components
+import StoreCard from '../components/StoreCard';
+
+// Context
 import { UseStores } from '../store/StoreProvider';
 import { UseAddress } from '../store/AddressProvider';
 
+// Styles
 import './StoresList.scoped.scss';
-import StoreCard from '../components/StoreCard';
 
 const StoreList = () => {
   const { storesList, storesLoading, cuisines } = UseStores();
-  const { address } = UseAddress();
-
   const [filter, setFilter] = useState('all');
+
+  const { address } = UseAddress();
 
   const getFilter = (e) => {
     setFilter(e.target.value);
   };
 
+  // prevent access to stores without entering the address
   if (!address)
     return (
       <div className='no-address-container'>
