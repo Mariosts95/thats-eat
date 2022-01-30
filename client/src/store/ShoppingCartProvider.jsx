@@ -15,7 +15,19 @@ const ShoppingCartProvider = ({ children }) => {
   const closeCart = () => setOpen(false);
 
   const addToCart = (item, storeId, amount) => {
-    setShoppingCart((prev) => ({ ...prev, storeId }));
+    // check if the items are from the same store
+    if (storeId !== shoppingCart.storeId) {
+      setShoppingCart((prev) => {
+        return {
+          ...prev,
+          storeId,
+          items: [],
+        };
+      });
+    } else {
+      setShoppingCart((prev) => ({ ...prev, storeId }));
+    }
+
     const existingCartItem = shoppingCart.items.find((x) => x._id === item._id);
 
     if (existingCartItem) {
