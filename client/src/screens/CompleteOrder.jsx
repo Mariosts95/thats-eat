@@ -24,7 +24,7 @@ const Complete = () => {
       <h1>
         Your order #{getRandomInt(1000, 9999)} was completed successfully!
       </h1>
-      <p>You will be redirected to home page in a few secconds.</p>
+      <p>You will be redirected to home page in a few seconds.</p>
     </div>
   );
 };

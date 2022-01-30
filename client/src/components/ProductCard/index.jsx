@@ -28,7 +28,7 @@ const ProductCard = ({ cart, id, imgPath, product, storeId }) => {
         <div className='quantity-container'>
           <input
             type='number'
-            value={amount ? amount : 1}
+            value={amount ? amount : ''}
             min={1}
             max={20}
             onChange={(e) => {
