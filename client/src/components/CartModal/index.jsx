@@ -2,18 +2,27 @@ import React from 'react';
 import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 
+// MUI
 import Modal from '@mui/material/Modal';
+
+// Context
 import { UseShoppingCart } from '../../store/ShoppingCartProvider';
+
+// Components
 import ProductCard from '../ProductCard';
 
+// Helper Functions
 import calcTotal from '../../helpers/calcTotal';
 
+// Styles
 import './CartModal.scoped.scss';
 
 export default function CartModal() {
   const { shoppingCart, closeCart, open } = UseShoppingCart();
+
   const navigate = useNavigate();
 
+  // prevent opening the cart without items
   if (shoppingCart.items.length === 0) return null;
 
   const total = calcTotal(shoppingCart.items, 2);

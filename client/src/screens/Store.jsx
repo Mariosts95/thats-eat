@@ -1,24 +1,30 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
+// Context
 import { UseStores } from '../store/StoreProvider';
 
+// Components
 import ProductCard from '../components/ProductCard';
 
+// Styles
 import './Store.scoped.scss';
 
 const Store = () => {
-  let { id } = useParams();
   const { storesList, storesLoading } = UseStores();
+  // get the store id from url
+  let { id } = useParams();
 
+  // prevent rendering without items
   if (storesLoading || !storesList) return <div>Loading...</div>;
 
+  // find the specific store from id in url
   const store = storesList.stores.find((x) => x._id === id);
   const groupedProducts = {};
 
+  // loop through products and group them in categories
   for (let i = 0; i < store.menu.length; i += 1) {
     const product = store.menu[i];
-
     if (!(product.category in groupedProducts)) {
       groupedProducts[product.category] = [product];
     } else {
@@ -26,6 +32,7 @@ const Store = () => {
     }
   }
 
+  // get the categories from the grouped array
   const categories = Object.keys(groupedProducts);
 
   return (

@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+
+// Context
 import { UseShoppingCart } from '../../store/ShoppingCartProvider';
 
-// styles
+// Styles
 import './ProductCard.scoped.scss';
 
 const ProductCard = ({ cart, id, imgPath, product, storeId }) => {
@@ -9,6 +11,7 @@ const ProductCard = ({ cart, id, imgPath, product, storeId }) => {
 
   const [amount, setAmount] = useState(product.amount ? product.amount : 1);
 
+  // rerender everytime the amount changes
   useEffect(() => {}, [amount]);
 
   const { name, description, price } = product;

@@ -3,10 +3,11 @@ import React from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade } from 'swiper';
-import { v4 as uuidv4 } from 'uuid';
+
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-fade';
+
 // Styles
 import './Slider.scoped.scss';
 
@@ -24,7 +25,7 @@ const Slider = ({ images }) => {
       effect='fade'
     >
       {images.map((slide) => (
-        <SwiperSlide key={uuidv4()}>
+        <SwiperSlide key={slide}>
           <img src={slide} />
         </SwiperSlide>
       ))}

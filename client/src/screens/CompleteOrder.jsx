@@ -1,9 +1,13 @@
 import { useEffect } from 'react';
-import { UseShoppingCart } from '../store/ShoppingCartProvider';
 import { useNavigate } from 'react-router-dom';
 
+// Context
+import { UseShoppingCart } from '../store/ShoppingCartProvider';
+
+// Helper Functions
 import { getRandomInt } from '../helpers/RandomNumber';
 
+// Styles
 import './CompleteOrder.scoped.scss';
 
 const Complete = () => {
@@ -11,6 +15,7 @@ const Complete = () => {
 
   const navigate = useNavigate();
 
+  // check if cart has items else redirect to homepage
   useEffect(() => {
     if (shoppingCart.items.length === 0) navigate('/');
     setTimeout(() => {

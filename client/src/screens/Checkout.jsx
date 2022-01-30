@@ -1,10 +1,16 @@
 import { useEffect } from 'react';
-import { UseShoppingCart } from '../store/ShoppingCartProvider';
 import { useNavigate } from 'react-router-dom';
 
+// Components
 import ProductCard from '../components/ProductCard';
+
+// Context
+import { UseShoppingCart } from '../store/ShoppingCartProvider';
+
+// Helper Functions
 import calcTotal from '../helpers/calcTotal';
 
+// Styles
 import './Checkout.scoped.scss';
 
 const Checkout = () => {
@@ -12,10 +18,11 @@ const Checkout = () => {
 
   const navigate = useNavigate();
 
+  // check if cart has items else redirect to homepage
   useEffect(() => {
     if (shoppingCart.items.length === 0) navigate('/');
   }, []);
-
+  // calculate the total from cart items and keep only 2 decimals
   const total = calcTotal(shoppingCart.items, 2);
 
   return (
